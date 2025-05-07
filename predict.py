@@ -4,7 +4,7 @@ from torchvision.transforms import v2
 from PIL import Image
 
 
-def preprocess_image(image_path):
+def preprocess_image(image_path: Path):
     preprocess = v2.Compose([
         v2.Resize(size=256),
         v2.CenterCrop(size=(224, 224)),
