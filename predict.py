@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from torchvision.transforms import v2
 from PIL import Image
+from pathlib import Path
 
 
 def preprocess_image(image_path: Path):
