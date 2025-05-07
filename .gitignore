@@ -3,3 +3,6 @@
 *.png
 
 *.pyc
+
+imagenet_classes.txt
+.DS_Store
