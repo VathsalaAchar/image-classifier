@@ -1,9 +1,18 @@
 from fastapi import FastAPI, UploadFile
+from pathlib import Path
+from PIL import Image
+from predict import predict_class
 
 app = FastAPI()
 
 
-@app.post("/file_details")
-async def get_file(file: UploadFile):
-    content = await file.read()
-    return {"filename": file.filename, "type": file.content_type, "file_size": len(content)}
+@app.post("/predict")
+def model_inference(file: UploadFile):
+    img_file_path = Path(f"./{file.filename}")
+    img = Image.open(file.file)
+    img.save(img_file_path)
+    img.close()
+
+    result = predict_class(img_file_path)
+
+    return {"predicted_class_index": str(result)}
