@@ -11,11 +11,15 @@ def model_inference(file: UploadFile):
     '''
     Returns the predicted class index when given an image
     '''
+    # save the file locally
     img_file_path = Path(f"./{file.filename}")
     img = Image.open(file.file)
     img.save(img_file_path)
     img.close()
 
     result = predict_class(img_file_path)
+
+    # clean up and remove saved image
+    Path.unlink(img_file_path)
 
     return {"predicted_class_index": str(result)}
