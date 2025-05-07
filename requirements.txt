@@ -1,0 +1,10 @@
+onnx
+numpy
+torch
+torchvision
+onnxruntime
+scikit-image
+scikit-image[data]
+requests
+fastapi[standard]
+python-multipart
