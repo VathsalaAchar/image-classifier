@@ -8,6 +8,9 @@ app = FastAPI()
 
 @app.post("/predict")
 def model_inference(file: UploadFile):
+    '''
+    Returns the predicted class index when given an image
+    '''
     img_file_path = Path(f"./{file.filename}")
     img = Image.open(file.file)
     img.save(img_file_path)
