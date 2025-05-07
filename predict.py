@@ -12,6 +12,9 @@ logger = logging.getLogger(__name__)
 
 
 def preprocess_image(image_path: Path):
+    '''
+    Preprocesses image for ResNet-18
+    '''
     preprocess = v2.Compose([
         v2.Resize(size=256),
         v2.CenterCrop(size=(224, 224)),
@@ -30,6 +33,10 @@ def preprocess_image(image_path: Path):
 
 
 def predict_class(image_path: Path):
+    '''
+    Given an image path, this loads the ResNet-18 onnx model 
+    and returns a predicted class
+    '''
     # get preprocessed input image
     input_img = preprocess_image(image_path)
 

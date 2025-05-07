@@ -17,6 +17,7 @@ def model_inference(file: UploadFile):
     img.save(img_file_path)
     img.close()
 
+    # get the predicted class
     result = predict_class(img_file_path)
 
     # clean up and remove saved image
